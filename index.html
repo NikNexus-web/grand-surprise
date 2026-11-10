@@ -5,39 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Special Day | Khushboo Dii ❤️</title>
+    <title>For Khushboo Dii ❤️ | Birthday Surprise</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="background-glow"></div>
-    <div class="particles" id="particles"></div>
+    <div id="particles"></div>
 
-    <!-- INTRO -->
-
-    <section class="intro" id="intro">
+    <!-- INTRO SCREEN -->
+    <section id="introScreen" class="screen active">
 
         <div class="intro-box">
 
-            <div class="intro-icon">✦</div>
+            <h1>Something Magical ✨</h1>
 
-            <p class="small-heading">A SPECIAL EXPERIENCE AWAITS</p>
+            <p>A special surprise is waiting for you...</p>
 
-            <h1>Something <span>Magical</span></h1>
-
-            <p class="intro-text">
-                Someone has created something special just for you.
-            </p>
-
-            <button id="startBtn">
-                OPEN YOUR SURPRISE →
+            <button id="openSurprise">
+                OPEN YOUR SURPRISE ❤️
             </button>
-
-            <p class="bottom-text">MADE WITH LOVE ❤️</p>
 
         </div>
 
@@ -45,48 +33,41 @@
 
 
     <!-- COUNTDOWN SCREEN -->
+    <section id="countdownScreen" class="screen">
 
-    <section class="countdown-screen hidden" id="countdownScreen">
+        <div class="countdown-box">
 
-        <div class="countdown-content">
+            <h1>Something Special Is Coming 💙</h1>
 
-            <p class="tag">A SPECIAL DAY IS APPROACHING</p>
+            <p>For Someone Truly Special</p>
 
-            <h1>THE COUNTDOWN <span>BEGINS</span></h1>
+            <div class="countdown">
 
-            <h2>FOR KHUSHBOO DII ❤️</h2>
-
-            <div class="timer">
-
-                <div class="timer-box">
+                <div class="time-box">
                     <span id="days">00</span>
                     <small>DAYS</small>
                 </div>
 
-                <div class="timer-box">
+                <div class="time-box">
                     <span id="hours">00</span>
                     <small>HOURS</small>
                 </div>
 
-                <div class="timer-box">
+                <div class="time-box">
                     <span id="minutes">00</span>
                     <small>MINUTES</small>
                 </div>
 
-                <div class="timer-box">
-                    <span id="seconds">05</span>
+                <div class="time-box">
+                    <span id="seconds">00</span>
                     <small>SECONDS</small>
                 </div>
 
             </div>
 
-            <p id="timerMessage">
-                SOMETHING BEAUTIFUL IS WAITING FOR YOU ✨
+            <p class="waiting-text">
+                The wait will be worth it! ❤️
             </p>
-
-            <div class="countdown-loader">
-                <div id="progressBar"></div>
-            </div>
 
         </div>
 
@@ -94,70 +75,46 @@
 
 
     <!-- MAIN BIRTHDAY WEBSITE -->
-
-    <main id="mainContent" class="hidden">
-
-        <!-- HERO -->
+    <main id="birthdayScreen" class="screen">
 
         <section class="hero">
 
             <div class="hero-content">
 
-                <p class="tag">✦ TODAY IS ALL ABOUT YOU ✦</p>
+                <h2>THE DAY IS FINALLY HERE!</h2>
 
-                <h1>HAPPY<br><span>BIRTHDAY</span></h1>
+                <h1>
+                    HAPPY BIRTHDAY
+                    <span>KHUSHBOO DII ❤️</span>
+                </h1>
 
-                <h2>KHUSHBOO DII ❤️</h2>
-
-                <p class="hero-description">
-                    A beautiful soul deserves a beautiful celebration.
-                    Today, every little moment is yours.
+                <p>
+                    Today is all about celebrating YOU!
                 </p>
 
-                <a href="#memories" class="hero-btn">
-                    EXPLORE YOUR SURPRISE ↓
-                </a>
+                <div class="hero-heart">💙</div>
 
             </div>
-
-            <div class="hero-orb"></div>
 
         </section>
 
 
-        <!-- MEMORIES -->
+        <!-- GALLERY -->
+        <section class="gallery-section">
 
-        <section class="memories" id="memories">
+            <h2>Beautiful Memories 📸</h2>
 
-            <p class="tag">A COLLECTION OF BEAUTIFUL MOMENTS</p>
-
-            <h2>PRECIOUS <span>MEMORIES</span></h2>
-
-            <p class="section-description">
-                Every picture tells a story. Here are some moments worth remembering.
-            </p>
+            <p>Some moments are simply unforgettable.</p>
 
             <div class="gallery">
 
-                <div class="photo-card">
-                    <img src="image1.jpeg" alt="Memory 1">
-                    <div class="photo-overlay">Beautiful Moments ✨</div>
-                </div>
+                <img src="image1.jpeg" alt="Memory 1">
 
-                <div class="photo-card">
-                    <img src="image2.jpeg" alt="Memory 2">
-                    <div class="photo-overlay">Unforgettable ❤️</div>
-                </div>
+                <img src="image2.jpeg" alt="Memory 2">
 
-                <div class="photo-card">
-                    <img src="image3.jpeg" alt="Memory 3">
-                    <div class="photo-overlay">Pure Happiness ✨</div>
-                </div>
+                <img src="image3.jpeg" alt="Memory 3">
 
-                <div class="photo-card">
-                    <img src="image4.jpeg" alt="Memory 4">
-                    <div class="photo-overlay">Always Special 💙</div>
-                </div>
+                <img src="image4.jpeg" alt="Memory 4">
 
             </div>
 
@@ -165,62 +122,45 @@
 
 
         <!-- VIDEO -->
-
         <section class="video-section">
 
-            <p class="tag">A LITTLE SURPRISE FOR YOU</p>
+            <h2>A Special Video For You 🎬</h2>
 
-            <h2>YOUR SPECIAL <span>MOMENT</span></h2>
+            <video controls playsinline preload="metadata">
 
-            <div class="video-container">
+                <source src="bday video.mp4" type="video/mp4">
 
-                <video controls playsinline preload="metadata">
-                    <source src="bday video.mp4" type="video/mp4">
-                    Your browser does not support this video.
-                </video>
+                Your browser does not support video.
 
-            </div>
+            </video>
 
         </section>
 
 
         <!-- LETTER -->
-
         <section class="letter-section">
 
-            <p class="tag">SOMETHING FROM THE HEART</p>
+            <div class="letter-box">
 
-            <h2>A LITTLE <span>MESSAGE</span></h2>
-
-            <div class="letter-card">
-
-                <div class="heart">💙</div>
-
-                <h3>Dear Khushboo Dii,</h3>
+                <h2>Dear Khushboo Dii 💌</h2>
 
                 <p>
-                    On your special day, I just want to remind you
-                    how wonderful and special you are.
-
-                    <br><br>
-
-                    May your life always be filled with happiness,
-                    endless smiles, beautiful memories and countless
-                    reasons to celebrate.
-
-                    <br><br>
-
-                    Keep smiling, keep shining and never stop being
-                    the amazing person you are.
-
-                    <br><br>
-
-                    Wishing you the happiest birthday ever! ❤️
+                    On your special day, I just want to wish you
+                    endless happiness, success and lots of beautiful
+                    memories.
                 </p>
 
-                <div class="signature">
-                    With Love ❤️
-                </div>
+                <p>
+                    May every dream of yours come true.
+                    May your smile always shine brighter than ever.
+                </p>
+
+                <p>
+                    Keep smiling, keep shining and always stay happy.
+                    You deserve all the beautiful things in this world.
+                </p>
+
+                <h3>Happy Birthday Khushboo Dii! ❤️</h3>
 
             </div>
 
@@ -228,42 +168,35 @@
 
 
         <!-- FINALE -->
+        <section class="final-section">
 
-        <section class="finale">
+            <h1>MAKE A WISH! ✨</h1>
 
-            <div class="finale-content">
+            <p>
+                May your life always be filled with happiness and love.
+            </p>
 
-                <div class="finale-star">✦</div>
-
-                <p class="tag">ONE LAST THING...</p>
-
-                <h1>KEEP<br><span>SHINING</span></h1>
-
-                <h2>KHUSHBOO DII ❤️</h2>
-
-                <p>
-                    The world is a little more beautiful with you in it.
-                </p>
-
-                <button id="celebrateBtn">
-                    CELEBRATE YOUR DAY 🎉
-                </button>
-
-                <canvas id="fireworks"></canvas>
-
-            </div>
+            <button id="celebrateBtn">
+                CELEBRATE AGAIN 🎆
+            </button>
 
         </section>
 
 
         <footer>
-            MADE WITH ❤️ FOR KHUSHBOO DII
+
+            MADE WITH LOVE BY NIKUNJ ❤️
+
         </footer>
 
     </main>
 
 
+    <!-- BIRTHDAY SONG -->
+    <audio id="birthdaySong" src="bday song.mp3" preload="auto"></audio>
+
     <script src="script.js"></script>
 
 </body>
+
 </html>

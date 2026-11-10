@@ -1,8 +1,37 @@
+// =================================
+// NIKUNJ PRESENTS: KHUSHBOO DII
+// =================================
+
+
+// ELEMENTS
+
+const introScreen = document.getElementById("introScreen");
+const countdownScreen = document.getElementById("countdownScreen");
+const birthdayScreen = document.getElementById("birthdayScreen");
+
+const openSurprise = document.getElementById("openSurprise");
+
+const birthdaySong = document.getElementById("birthdaySong");
+
+
+// =================================
+// COUNTDOWN SETTINGS
+// =================================
+
+// 12 November 2026, 12:00 AM
+// JavaScript months start from 0.
+// November = 10
+
+const birthdayDate = Date.now() + 5000;
+
+
+// =================================
 // PARTICLES
+// =================================
 
-const particleContainer = document.getElementById("particles");
+const particlesContainer = document.getElementById("particles");
 
-for (let i = 0; i < 45; i++) {
+for (let i = 0; i < 60; i++) {
 
     const particle = document.createElement("div");
 
@@ -10,225 +39,229 @@ for (let i = 0; i < 45; i++) {
 
     particle.style.left = Math.random() * 100 + "%";
 
-    particle.style.animationDuration =
-        (Math.random() * 8 + 5) + "s";
+    particle.style.top = Math.random() * 100 + "%";
 
-    particle.style.animationDelay =
-        Math.random() * 8 + "s";
+    particle.style.animationDelay = Math.random() * 5 + "s";
 
-    particleContainer.appendChild(particle);
+    particle.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+    particlesContainer.appendChild(particle);
 
 }
 
 
-// INTRO TO COUNTDOWN
+// =================================
+// INTRO BUTTON
+// =================================
 
-const startBtn = document.getElementById("startBtn");
+openSurprise.addEventListener("click", () => {
 
-startBtn.addEventListener("click", () => {
+    introScreen.classList.remove("active");
 
-    document.getElementById("intro").classList.add("hidden");
-
-    const countdownScreen =
-        document.getElementById("countdownScreen");
-
-    countdownScreen.classList.remove("hidden");
-
-    window.scrollTo(0, 0);
+    countdownScreen.classList.add("active");
 
     startCountdown();
 
 });
 
 
-// COUNTDOWN SETTINGS
-
-const TEST_MODE = false;
-
-const birthdayDate = TEST_MODE
-    ? Date.now() + 5000
-    : new Date(2026, 10, 12, 0, 0, 0).getTime();
-
+// =================================
+// COUNTDOWN
+// =================================
 
 let countdownInterval;
 
+let birthdayOpened = false;
+
+
 function startCountdown() {
 
-    const totalTime = birthdayDate - Date.now();
+    updateCountdown();
 
-    const startTime = Date.now();
+    countdownInterval = setInterval(updateCountdown, 1000);
 
-    function updateCountdown() {
+}
 
-        const distance = birthdayDate - Date.now();
 
-        const elapsed = Date.now() - startTime;
+function updateCountdown() {
 
-        const progress = Math.min(
-            100,
-            (elapsed / totalTime) * 100
-        );
+    const now = new Date().getTime();
 
-        document.getElementById("progressBar").style.width =
-            progress + "%";
+    const distance = birthdayDate - now;
 
-        if (distance <= 0) {
 
-            clearInterval(countdownInterval);
+    if (distance <= 0) {
+
+        clearInterval(countdownInterval);
+
+        if (!birthdayOpened) {
+
+            birthdayOpened = true;
 
             document.getElementById("days").textContent = "00";
             document.getElementById("hours").textContent = "00";
             document.getElementById("minutes").textContent = "00";
             document.getElementById("seconds").textContent = "00";
 
-            document.getElementById("timerMessage").textContent =
-                "HAPPY BIRTHDAY KHUSHBOO DII! ❤️";
-
             setTimeout(() => {
 
-                document.getElementById("countdownScreen")
-                    .classList.add("hidden");
-
-                document.getElementById("mainContent")
-                    .classList.remove("hidden");
-
-                window.scrollTo(0, 0);
+                openBirthdayWebsite();
 
             }, 2000);
 
-            return;
         }
 
-        document.getElementById("days").textContent =
-            Math.floor(distance / 86400000);
-
-        document.getElementById("hours").textContent =
-            Math.floor((distance / 3600000) % 24);
-
-        document.getElementById("minutes").textContent =
-            Math.floor((distance / 60000) % 60);
-
-        document.getElementById("seconds").textContent =
-            Math.ceil((distance % 60000) / 1000);
+        return;
 
     }
 
-    updateCountdown();
 
-    countdownInterval = setInterval(updateCountdown, 100);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-}
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
 
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
 
-// FIREWORKS
-
-const canvas = document.getElementById("fireworks");
-
-const ctx = canvas.getContext("2d");
-
-let fireworks = [];
-
-function resizeCanvas() {
-
-    canvas.width = canvas.offsetWidth;
-
-    canvas.height = canvas.offsetHeight;
-
-}
-
-resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
+    const seconds = Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+    );
 
 
-function createFirework() {
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
 
-    const x = Math.random() * canvas.width;
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
 
-    const y = Math.random() * canvas.height * 0.6;
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
 
-    const colors = [
-        "#00d9ff",
-        "#7165ff",
-        "#ffffff",
-        "#ff5cff"
-    ];
-
-    const color = colors[
-        Math.floor(Math.random() * colors.length)
-    ];
-
-    for (let i = 0; i < 40; i++) {
-
-        const angle = Math.random() * Math.PI * 2;
-
-        const speed = Math.random() * 5 + 1;
-
-        fireworks.push({
-
-            x: x,
-            y: y,
-
-            vx: Math.cos(angle) * speed,
-
-            vy: Math.sin(angle) * speed,
-
-            life: 100,
-
-            color: color
-
-        });
-
-    }
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
 
 }
 
 
-function animateFireworks() {
+// =================================
+// OPEN BIRTHDAY WEBSITE
+// =================================
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function openBirthdayWebsite() {
 
-    fireworks.forEach((particle, index) => {
+    countdownScreen.classList.remove("active");
 
-        particle.x += particle.vx;
+    birthdayScreen.classList.add("active");
 
-        particle.y += particle.vy;
+    window.scrollTo(0, 0);
 
-        particle.life--;
+    playBirthdaySong();
 
-        ctx.globalAlpha = particle.life / 100;
+    startFireworks();
 
-        ctx.fillStyle = particle.color;
+}
 
-        ctx.beginPath();
 
-        ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+// =================================
+// BIRTHDAY SONG
+// =================================
 
-        ctx.fill();
+function playBirthdaySong() {
 
-        if (particle.life <= 0) {
+    birthdaySong.currentTime = 0;
 
-            fireworks.splice(index, 1);
+    birthdaySong.play().catch(() => {
 
-        }
+        showMusicButton();
 
     });
 
-    ctx.globalAlpha = 1;
+}
 
-    requestAnimationFrame(animateFireworks);
+
+function showMusicButton() {
+
+    if (document.getElementById("musicButton")) return;
+
+    const button = document.createElement("button");
+
+    button.id = "musicButton";
+
+    button.textContent = "🎵 PLAY BIRTHDAY SONG";
+
+    button.style.position = "fixed";
+    button.style.bottom = "25px";
+    button.style.left = "50%";
+    button.style.transform = "translateX(-50%)";
+    button.style.zIndex = "10000";
+
+    document.body.appendChild(button);
+
+    button.addEventListener("click", () => {
+
+        birthdaySong.play();
+
+        button.remove();
+
+    });
 
 }
 
-animateFireworks();
 
+// =================================
+// FIREWORKS
+// =================================
+
+function startFireworks() {
+
+    const emojis = ["🎆", "✨", "🎇", "💙", "❤️"];
+
+    let count = 0;
+
+    const fireworkInterval = setInterval(() => {
+
+        const firework = document.createElement("div");
+
+        firework.classList.add("firework");
+
+        firework.textContent = emojis[
+            Math.floor(Math.random() * emojis.length)
+        ];
+
+        firework.style.left = Math.random() * 90 + 5 + "%";
+
+        firework.style.top = Math.random() * 70 + 10 + "%";
+
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+
+            firework.remove();
+
+        }, 1500);
+
+
+        count++;
+
+        if (count >= 30) {
+
+            clearInterval(fireworkInterval);
+
+        }
+
+    }, 250);
+
+}
+
+
+// =================================
+// CELEBRATE AGAIN BUTTON
+// =================================
 
 document.getElementById("celebrateBtn").addEventListener("click", () => {
 
-    for (let i = 0; i < 7; i++) {
-
-        setTimeout(createFirework, i * 300);
-
-    }
+    startFireworks();
 
 });
