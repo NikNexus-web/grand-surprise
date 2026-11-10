@@ -22,7 +22,7 @@ const birthdaySong = document.getElementById("birthdaySong");
 // JavaScript months start from 0.
 // November = 10
 
-const birthdayDate = Date.now() + 5000;
+const birthdayDate = new Date(2026, 10, 12, 0, 0, 0).getTime();
 
 
 // =================================
